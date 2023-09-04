@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Russo+One");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+
+svg {
+  font-family: "Russo One", sans-serif;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+svg text {
+  text-transform: uppercase;
+  animation: stroke 10s infinite alternate;
+  stroke-width: 4;
+  stroke: #0062ff;
+  font-size: 100px;
+}
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgb(255, 255, 255);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgb(255, 255, 255);
+  }
+  80% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgb(255, 255, 255);
+    stroke-width: 3;
+  }
+  100% {
+    fill:transparent;
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+    text-shadow: 4px 4px 4px rgb(0, 200, 255);
+  }
+}
