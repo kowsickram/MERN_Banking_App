@@ -1,9 +1,9 @@
 import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
 import React, { useState } from "react";
+import axios from "axios";
 import { useContext } from "react";
 import UserContext from "./context";
-import Navebar from "./Navbar";
+import ProfileCard from "./ProfileCard";
 
 export default function Account() {
   const [username, setUsername] = useState("");
@@ -13,12 +13,8 @@ export default function Account() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoginSuccess, setIsLoginSuccess] = useState(false);
-  
- 
   const ctx = useContext(UserContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
-
+  
   function handleNewAccount(event) {
     event.preventDefault();
     let nameRegex = /^[a-zA-Z]+$/;
@@ -28,7 +24,7 @@ export default function Account() {
     } else {
       setNameError("");
     }
-
+    
     // Validate email
     let emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
@@ -45,66 +41,64 @@ export default function Account() {
     } else {
       setPasswordError("");
     }
-
-
-    // Push values to UserContext
     ctx.users.push({ username, email, balance: 0 });
-     // Update context with logged-in user's information
-    ctx.loggedInUser = { username, email };
-    // Submit the form
-    setIsLoggedIn(true);
-    setIsLoginSuccess(true);
-    
+    // Send POST request to create a new user
+    axios.post('http://localhost:4000/api/newuser', {
+      username: username,
+      password: password,
+    })
+    .then((response) => {
+      // Assuming your server returns a success message, you can check it here
+      if (response.data && response.data.success) {
+        setIsLoginSuccess(true);
+        // You can also handle any additional logic here if needed
+      } else {
+        // Handle unsuccessful response here, such as displaying an error message
+      }
+      
+      // Reset form values
+      setUsername('');
+      setPassword('');
+    })
+    .catch((error) => {
+      console.error('Error creating user:', error);
+      // Handle error here, such as displaying an error message
+    });
   }
-
-  function handleAddAccount() {
-    // Reset form values
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setIsLoginSuccess(false);
-  }
-
   const isFormValid = username && email && password;
 
   return (
     <>
-      <div className="Home-page"></div>
+      <div className=" max-w-md mx-auto p-4 Home-page"></div>
       <center>
         {isLoginSuccess ? (
-          
           <>
-          {/* <Alert severity="success" onClose={handleAddAccount}>
-            Logged In Successfully
-          </Alert> */}
-          <Alert severity="success" color="success">
-            Logged In Successfully
-          </Alert>
-        
-           
-            {/* <button type="button" onClick={handleAddAccount}>
-              Add another account
-            </button>
-            <br />
-            <br /> */}
+            <Alert severity="success" color="success">
+              Logged In Successfully
+            </Alert>
+
             <button type="button">
-              <a href="#/withdraw">Withdraw</a>
+              <a href="#/withdraw" className="bg-blue-500 text-white px-4 py-2 rounded">
+                Withdraw
+              </a>
             </button>
             <button type="button">
-              <a href="#/deposit/">Deposit</a>
+              <a href="#/deposit/" className="bg-green-500 text-white px-4 py-2 rounded">
+                Deposit
+              </a>
             </button>
           </>
         ) : (
           <form onSubmit={handleNewAccount}>
+            <h1 className="text-3xl font-bold text-white m-8">BAD BANK</h1>
             
-            <h1 className="log-head">Login to Your Account</h1>
-            <p className="log-info">Don't have an account yet ? <a href="#/signup/">Sign Up</a></p>
+            <p className="log-info">
+              Don't have an account yet ? <a href="#/signup/">Sign Up</a>
+            </p>
+
             
-            
-            
-        
-            <hr />
             <input
+              className="border-bottom text-white border-gray-300 px-4 py-2  placeholder-gray-400"
               id="name"
               type="text"
               placeholder="Username"
@@ -112,10 +106,11 @@ export default function Account() {
               onChange={(event) => setUsername(event.target.value)}
             />
             <span style={{ color: "red" }}>{nameError}</span>
-            
+
             <br />
-            
+
             <input
+              className="border-bottom text-white border-gray-300 px-4 py-2  placeholder-gray-400"
               type="email"
               id="email"
               value={email}
@@ -126,6 +121,7 @@ export default function Account() {
             <span style={{ color: "red" }}>{emailError}</span>
             <br />
             <input
+              className="border-bottom text-white border-gray-300 px-4 py-2  placeholder-gray-400"
               type="password"
               id="password"
               placeholder="Password"
@@ -134,19 +130,18 @@ export default function Account() {
               required
             />
             <span style={{ color: "red" }}>{passwordError}</span>
-           
+
             <br />
             <button
               type="submit"
               onClick={handleNewAccount}
               disabled={!isFormValid}
-              className="log-btn"
+              className="bg-blue-500 text-white text-center px-4 py-2 rounded-lg disabled:bg-blue-499"
             >
-              login
+              Login
             </button>
-            <br />
-           
             
+            <br />
           </form>
         )}
       </center>

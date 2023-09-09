@@ -3,41 +3,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
 
 body {
-  background-image: url("./baggg.jpg");
-  background: contain no-repeat;
-  
+  background: #0f0c29;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }
+
 html {
   content: center;
 }
-.log-head{
-  padding-top: 10px;
-  font-size:25px;
-  font-family: 'Josefin Sans', sans-serif;
-  color: snow;
-}
-.log-info{
-  color: #ededed7f;
-}
-hr{
-  background-color: #ffffff;
-  height: 10px;
-}
-a{
+
+
+a {
   text-decoration: none;
 }
-button.log-btn{
-  border-radius: 4px;
-  box-shadow: none;
-  
-}
-.log-btn:hover{
+
+
+.log-btn:hover {
   box-shadow: 4px 4px 4px 4px solid black;
   background-color: rgb(40, 40, 40);
 }
-hr{
-  border : solid white 1px ;
+
+hr {
+  border: solid white 1px;
 }
+
 h4 {
   color: rgb(255, 255, 255);
 }
@@ -46,6 +40,7 @@ h2 {
   color: rgb(255, 255, 255);
   text-align: center;
 }
+
 p {
   font-family: Arial, Helvetica, sans-serif;
   color: snow;
@@ -55,7 +50,8 @@ p {
 ul {
   list-style: none;
 }
-button {
+
+/* button {
   width: 210px;
   height: 30px;
   margin: 20px;
@@ -67,30 +63,13 @@ button {
   cursor: pointer;
   text-align: center;
   font-family: "Quicksand", sans-serif;
-}
-
-.deposit {
-  background-color: rgba(34, 34, 34, 0.897);
-  border-radius: 20px;
-
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  
-}
-.withdraw {
-  background-color: rgba(34, 34, 34, 0.897);
-  border-radius: 20px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  
-}
+} */
 
 
 nav {
   text-align: center;
 }
+
 .balance {
   color: rgb(0, 0, 0);
   background-color: snow;
@@ -103,18 +82,13 @@ input::placeholder {
   color: rgb(255, 255, 255);
   font-size: 13px;
 }
-#dob {
-  text-align: center;
 
-  text-align: center;
-  color: rgb(255, 255, 255);
-}
-.feedback {
-  color: #ffffff;
-}
+
+
 textarea {
   width: 500px;
 }
+
 input {
   display: block;
   height: 25px;
@@ -127,9 +101,9 @@ input {
   color: rgb(255, 255, 255);
   border-bottom: 2px solid snow;
 }
-input::placeholder{
-  color: #ededed6a;
-}
+
+
+
 form {
   background-color: rgba(34, 34, 34, 0.755);
   width: 400px;
@@ -138,16 +112,19 @@ form {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  
+
 }
+
 .bg-dark {
   color: snow;
 }
+
 label {
   color: white;
 
   font-family: "Quicksand", sans-serif;
 }
+
 body {
   background-color: rgba(149, 230, 255, 0.486);
 }
@@ -157,26 +134,29 @@ table {
   margin: auto;
   border-collapse: collapse;
 }
+
 th,
 td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
 @media (max-width: 100%) {
   .table-responsive {
     overflow-x: auto;
   }
 }
+
 @media (max-width: 768px) {
   form {
     width: 90%;
   }
+
   textarea,
   input,
   label,
-  button
-{
+  button {
     font-size: 1rem;
     padding: 0.5rem;
     max-width: 90%;
@@ -187,10 +167,8 @@ td {
 nav a {
   font-family: "Montserrat", sans-serif;
 }
-img {
-  border-radius: 100%;
-  margin: 10px;
-}
+
+
 
 footer {
   position: relative;

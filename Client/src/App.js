@@ -1,5 +1,5 @@
-import "./Pages/pagestyle.css";
-
+// import "./Pages/pagestyle.css";
+import "./App.css"
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, HashRouter } from "react-router-dom";
@@ -38,9 +38,7 @@ function App() {
             <Route path="/" exact element={<Home />} />
             <Route path="/Home" element={<Home />} />
              <Route path="/Signup" exact element={<Signup />} /> 
-
             <Route path="/Account" element={<Account />} />
-
             <Route path="/Deposit" element={<Deposit />} />
             <Route path="/withdraw" element={<Withdraw />} />
             <Route path="/alldata" element={<Alldata />} />

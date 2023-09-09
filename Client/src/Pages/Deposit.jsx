@@ -1,4 +1,3 @@
-import "./pagestyle.css";
 import { useState, useContext } from "react";
 import UserContext from "./context";
 
@@ -34,24 +33,28 @@ export default function Deposit() {
   }
 
   return (
-    <html>
-      <div className="deposit">
-        <h1>Deposit</h1>
-
-        <center>
-          <br />
-          <input
-            type="number"
-            value={deposit}
-            placeholder="Enter the amount to be Deposited"
-            onChange={(e) => setDeposit(Number(e.target.value))}
-          ></input>
-          <button onClick={handleCreate}>Deposit</button>
-          <div className="balance">
-            <b>{message}</b>
-          </div>
-        </center>
+    <div className="max-w-md mx-auto p-4 bg-black rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold text-center text-white">Deposit</h1>
+      <div className="p-4">
+        <input
+          className="w-full px-4 py-2  text-white placeholder-gray-400 transition-all duration-300 focus:outline-none focus:border-cyan-600"
+          type="number"
+          value={deposit}
+          placeholder="Enter the amount to be Deposited"
+          onChange={(e) => setDeposit(Number(e.target.value))}
+        ></input>
       </div>
-    </html>
+      <div className="p-4 text-center">
+        <button
+          className="w-full rounded-full bg-cyan-600 text-white py-2 hover:bg-cyan-700 transition-all duration-300"
+          onClick={handleCreate}
+        >
+          Deposit
+        </button>
+      </div>
+      <div className="p-4 text-white text-2xl text-center">
+        <b>{message}</b>
+      </div>
+    </div>
   );
 }
