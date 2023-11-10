@@ -27,7 +27,7 @@ function CustomerCare() {
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="bg-grey-500 border rounded-lg p-2 w-full h-32"
+            className="bg-grey-500 border text-black rounded-lg p-2 w-full h-32"
           />
           <br />
 
